@@ -25,7 +25,7 @@ export class WritingPromptComponent {
             "Write about a conversation between two people from different eras.",
             "Create a story about a person who discovers a hidden magical ability."
         ],
-        nonFiction: [
+        Non: [
             "Describe a moment that changed your perspective on life.",
             "Write about someone who has greatly influenced you.",
             "What are three values that are most important to you?",
@@ -39,7 +39,7 @@ export class WritingPromptComponent {
         ]
     };
 
-    generatePrompt(category: 'fiction' | 'nonFiction') {
+    generatePrompt(category: 'fiction' | 'Non') {
         const promptArray = this.prompts[category];
         const randomIndex = Math.floor(Math.random() * promptArray.length);
         const promptText = promptArray[randomIndex];

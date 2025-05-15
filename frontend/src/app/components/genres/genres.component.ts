@@ -30,7 +30,7 @@ export class GenresComponent implements OnInit {
     }
   availableGenres = [
     'Fiction',
-    'Non Fiction',
+    'Non',
     'Classics',
     'Fantasy',
     'Romance',

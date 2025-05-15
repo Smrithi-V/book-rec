@@ -402,7 +402,7 @@ class HybridRecommender:
 
     # # Strict fiction vs non-fiction filter
     #     is_fiction = 'Fiction' in preferred_genres
-    #     is_non_fiction = 'Non Fiction' in preferred_genres
+    #     is_non_fiction = 'Nonfiction' in preferred_genres
 
     #     age_genres = {g.lower().strip() for g in self.get_age_appropriate_genres(age)}
     #     hobby_genres = {g.lower().strip() for g in self.get_hobby_related_genres(hobbies)}
@@ -713,46 +713,6 @@ class HybridRecommender:
                 "playlist": self.recommend_playlist_for_book(fallback_book['Description'])
             }
         
-
-        from sklearn.metrics import precision_score, recall_score
-
-    def evaluate_recommendation_accuracy(self):
-        """Evaluate Precision and Recall of the recommendation system."""
-    
-        feedback_df = self.feedback_df  # Load user feedback data
-        recommended_books_df = self.users_df[['User name', 'Recommended Books']]  # Load user recommendations
-
-    # Mark a book as relevant if it was either 'liked' or 'saved'
-        feedback_df['relevant'] = feedback_df['liked'] | feedback_df['saved']
-
-        y_true = []  # Actual user preferences (1 = relevant, 0 = not relevant)
-        y_pred = []  # System recommendations (1 = recommended, 0 = not recommended)
-
-        for _, row in recommended_books_df.iterrows():
-            user = row['User name']
-            rec_books = eval(row['Recommended Books']) if isinstance(row['Recommended Books'], str) else []
-
-        # Get the books this user actually liked/saved
-            relevant_books = set(feedback_df[(feedback_df['username'] == user) & feedback_df['relevant']]['book_title'])
-
-        # Compare recommendations with actual preferences
-            for book in rec_books:
-                y_true.append(1 if book in relevant_books else 0)  # 1 if relevant, 0 otherwise
-                y_pred.append(1)  # 1 because the system recommended it
-
-        # Identify books that were **relevant but NOT recommended** (False Negatives)
-            for book in relevant_books:
-                if book not in rec_books:  
-                    y_true.append(1)  # Should have been recommended
-                    y_pred.append(0)  # But was not recommended
-
-    # Compute Precision & Recall
-        precision = precision_score(y_true, y_pred)
-        recall = recall_score(y_true, y_pred)
-
-        return {"Precision": precision, "Recall": recall}
-
-
 
 
 
