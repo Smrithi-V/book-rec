@@ -1,0 +1,114 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Beneath the Moonlight</title>
+</head>
+
+<body>
+
+  <div class="container1">
+    <div class="con">
+      <div class="header">
+        <h1>Tell us about you</h1>
+      </div>
+      <div class="outer-headings">
+        <h1>
+          <div class="inner-headings">
+            <div class="rotating-text">
+              <div class="rotating-item" id="genre">Genre</div>
+              <div class="rotating-item" id="notes">Notes</div>
+              <div class="rotating-item" id="age">Age</div>
+              <div class="rotating-item" id="hobbies">Hobbies</div>
+            </div>
+          </div>
+        </h1>
+      </div>
+        <button class="genres-button" (click)="navigateTo('/main-page')">
+        <span class="button-text">Main Page</span>
+        <span class="button-icon">⚙️</span>
+        </button>
+        <button class="login-button" (click)="navigateTo('/login')">
+        <span class="button-text">Please Login</span>
+        <span class="button-icon">⚙️</span>
+        </button>
+      <!-- Genre Modal -->
+      <div id="genreModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="closeGenreModal">X</span>
+          <h2>Select Genre Options</h2>
+          <div class="checkbox-group">
+            <div *ngFor="let genre of availableGenres">
+              <label>
+                <input type="checkbox" [value]="genre" (change)="onGenreChange($event, genre)" /> {{ genre }}
+              </label>
+            </div>
+            <button (click)="savePreferences('genres')" class="submit-button">Save Genres</button>
+          </div>
+        </div>
+      </div>
+      <!-- Notes Modal -->
+      <div id="notesModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="closeNotesModal">X</span>
+          <h2>Add Notes</h2>
+          <textarea id="notesText" [(ngModel)]="notes" placeholder="Enter your notes here..."></textarea>
+          <button (click)="savePreferences('notes')" class="submit-button">Save Notes</button>
+        </div>
+      </div>
+      <!-- Age Modal -->
+      <div id="ageModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="closeAgeModal">X</span>
+          <h2>Enter Your Age</h2>
+          <div class="age-input-container">
+            <input type="number" id="ageInput" [(ngModel)]="age" min="1" max="120" placeholder="Enter your age...">
+          </div>
+          <button (click)="savePreferences('age')" class="submit-button">Save Age</button>
+        </div>
+      </div>
+      <!-- Hobbies Modal -->
+      <div id="hobbiesModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="closeHobbiesModal">X</span>
+          <h2>Select Your Hobbies</h2>
+          <div class="checkbox-group">
+            <div *ngFor="let hobby of availableHobbies">
+              <label>
+                <input type="checkbox" [value]="hobby" (change)="onHobbyChange($event, hobby)" /> {{ hobby }}
+              </label>
+            </div>
+            <button (click)="savePreferences('hobbies')" class="submit-button">Save Hobbies</button>
+          </div>
+        </div>
+      </div>
+      <div class="h-con">
+        <div class="hill2"></div>
+        <div class="hill"></div>
+        <div class="hill3"></div>
+      </div>
+      <div class="moons">
+        <div class="moon"></div>
+        <div class="moon"></div>
+        <div class="moon"></div>
+        <div class="moon"></div>
+        <div class="moon"></div>
+        <div class="moon"></div>
+        <div class="moon"></div>
+        <div class="moon"></div>
+      </div>
+      <div class="shoot"></div>
+      <div class="shoot"></div>
+      <div class="shoot"></div>
+      <div class="shoot"></div>
+      <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
