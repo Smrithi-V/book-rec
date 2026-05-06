@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
+  standalone: false,
     selector: 'app-search-details',
     templateUrl: './search-details.component.html',
     styleUrls: ['./search-details.component.css']

@@ -13,6 +13,7 @@ interface PreferencesData {
 }
 
 @Component({
+  standalone: false,
   selector: 'app-genres',
   templateUrl: './genres.component.html',
   styleUrls: ['./genres.component.scss']

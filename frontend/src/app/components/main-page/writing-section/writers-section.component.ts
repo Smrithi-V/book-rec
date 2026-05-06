@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
     selector: 'app-writers-section',
     templateUrl: './writers-section.component.html',
     styleUrls: ['./writers-section.component.css']

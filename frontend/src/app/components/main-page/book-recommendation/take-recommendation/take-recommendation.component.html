@@ -1,5 +1,11 @@
-<app-loading *ngIf="!recommendedBook"></app-loading>
+<app-loading *ngIf="isLoading"></app-loading>
 
-<!-- Show DisplayRecommendationComponent if recommendedBook has data -->
-<app-display *ngIf="recommendedBook" [recommendedBook]="recommendedBook" [recommendedPlaylist]="recommendedPlaylist">
+<app-display
+  *ngIf="!isLoading && recommendedBook"
+  [recommendedBook]="recommendedBook"
+  [recommendedPlaylist]="recommendedPlaylist">
 </app-display>
+
+<div *ngIf="!isLoading && !recommendedBook">
+  <p>No recommendation found.</p>
+</div>  

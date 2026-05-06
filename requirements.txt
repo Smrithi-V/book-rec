@@ -1,0 +1,22 @@
+flask
+flask-cors
+pandas
+requests
+beautifulsoup4
+sentence-transformers
+scikit-learn
+vaderSentiment
+rake-nltk
+numpy
+joblib
+torch
+transformers
+nltk
+scipy
+huggingface-hub
+sentencepiece
+
+# import nltk
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# exit()

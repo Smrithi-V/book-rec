@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
+  standalone: false,
     selector: 'app-book-recommendation',
     templateUrl: './book-recommendation.component.html',
     styleUrls: ['./book-recommendation.component.css']

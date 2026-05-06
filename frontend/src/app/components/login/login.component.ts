@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
+    standalone: false,
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
@@ -96,6 +97,7 @@ export class LoginComponent implements AfterViewInit {
 // import { Component, AfterViewInit } from '@angular/core';
 
 // @Component({
+  //standalone: false,
 //     selector: 'app-login',
 //     templateUrl: './login.component.html',
 //     styleUrls: ['./login.component.css']

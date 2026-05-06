@@ -43,6 +43,7 @@ interface RecommendationResponse {
 }
 
 @Component({
+  standalone: false,
     selector: 'app-take-recommendation',
     templateUrl: './take-recommendation.component.html',
     styleUrls: ['./take-recommendation.component.css']
@@ -57,41 +58,45 @@ export class TakeRecommendationComponent implements OnInit {
         console.log("TakeRecommendationComponent initialized.");
         this.takeRec();
     }
-
+    isLoading = true;
     takeRec() {
-        console.log("Take rec clicked!")
-        const username = this.userService.getUsername();
+    this.isLoading = true;
 
-        if (!username) {
-            console.error("No username found! Ensure the user is logged in.");
-            return;
+    const username = this.userService.getUsername();
+
+    if (!username) {
+        console.error("No username found!");
+        this.isLoading = false;
+        return;
+    }
+
+    this.http.post<RecommendationResponse>('http://localhost:5000/recommend', { username }).subscribe({
+        next: (response) => {
+        console.log("Response received:", response);
+
+        if (response.success && response.data) {
+            this.recommendedBook = {
+            ...response.data.book,
+            match_scores: response.data.match_scores
+            };
+
+            this.recommendedPlaylist = response.data.playlist || [];
+
+            console.log("Updated recommendedBook:", this.recommendedBook);
+            console.log("Updated recommendedPlaylist:", this.recommendedPlaylist);
+        } else {
+            this.recommendedBook = null;
+            this.recommendedPlaylist = [];
         }
 
-        console.log("Initiating recommendation request for user:", username);
-
-        this.http.post<RecommendationResponse>('http://localhost:5000/recommend', { username }).subscribe({
-            next: (response) => {
-                console.log("Response received:", response);
-                if (response.success && response.data) {
-                    // Initialize both book and playlist
-                    this.recommendedBook = {
-                        ...response.data.book,
-                        match_scores: response.data.match_scores
-                    };
-                    this.recommendedPlaylist = response.data.playlist || [];
-                    console.log("Updated recommendedBook:", this.recommendedBook);
-                    console.log("Updated recommendedPlaylist:", this.recommendedPlaylist);
-                } else {
-                    console.error("Error:", response.message);
-                    this.recommendedBook = null;
-                    this.recommendedPlaylist = [];
-                }
-            },
-            error: (error) => {
-                console.error("API error:", error);
-                this.recommendedBook = null;
-                this.recommendedPlaylist = [];
-            }
-        });
+        this.isLoading = false;
+        },
+        error: (error) => {
+        console.error("API error:", error);
+        this.recommendedBook = null;
+        this.recommendedPlaylist = [];
+        this.isLoading = false;
+        }
+    });
     }
 }

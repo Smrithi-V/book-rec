@@ -23,6 +23,7 @@ interface FeedbackState {
 }
 
 @Component({
+  standalone: false,
     selector: 'app-display',
     templateUrl: './display.component.html',
     styleUrls: ['./display.component.css']

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
     selector: 'app-podcasts-videos',
     templateUrl: "./podcasts-videos.component.html",
     styleUrls: ['./podcasts-videos.component.css']

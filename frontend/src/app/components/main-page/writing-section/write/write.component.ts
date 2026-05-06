@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
+  standalone: false,
     selector: 'app-writing-box',
     templateUrl: './write.component.html',
     styleUrls: ['./write.component.css']

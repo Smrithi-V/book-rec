@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
+  standalone: false,
     selector: 'app-book-resources',
     templateUrl: './books-resources.component.html',
     styleUrls: ['./books-resources.component.css']

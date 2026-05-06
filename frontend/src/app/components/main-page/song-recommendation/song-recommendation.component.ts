@@ -4,6 +4,7 @@ import { RecommendationService } from '../../../services/recommendation.service'
 
 
 @Component({
+  standalone: false,
     selector: 'app-song-recommendation',
     templateUrl: './song-recommendation.component.html',
     styleUrls: ['./song-recommendation.component.css']

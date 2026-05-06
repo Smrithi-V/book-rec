@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
+  standalone: false,
     selector: 'app-give-recommendation',
     templateUrl: './give-recommendation.component.html',
     styleUrls: ['./give-recommendation.component.css']

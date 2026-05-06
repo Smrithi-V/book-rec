@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
     selector: 'app-writing-prompt',
     templateUrl: './writing-prompt.component.html',
     styleUrls: ['./writing-prompt.component.css']
